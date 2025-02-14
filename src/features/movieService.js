@@ -3,8 +3,13 @@ import { toast } from 'react-toastify'
 const API_URL = 'https://softgenie.org/api/movies'
 
 // Get user movies
-const getMovies = async () => {
+const getMovies = async (search = '') => {
   try {
+    console.log('search', search)
+    if (search) {
+      const response = await axios.get(`${API_URL}?search=${search}`)
+      return response.data
+    }
     const response = await axios.get(API_URL)
     return response.data
   } catch (err) {

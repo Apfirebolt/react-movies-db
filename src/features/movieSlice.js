@@ -13,9 +13,9 @@ const initialState = {
 // Get Multiple movies
 export const getMovies = createAsyncThunk(
   "movies/getMovie",
-  async (_, thunkAPI) => {
+  async (search, thunkAPI) => {
     try { 
-      return await movieService.getMovies();
+      return await movieService.getMovies(search);
     } catch (error) {
       const message =
         (error.response &&
@@ -35,7 +35,6 @@ export const getMovie = createAsyncThunk(
   'movies/get',
   async (movieId, thunkAPI) => {
     try {
-      console.log('Movie ID', movieId)
       return await movieService.getMovie(movieId)
     } catch (error) {
       const message =

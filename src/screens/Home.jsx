@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMovies } from "../features/movieSlice";
 import Loader from "../components/Loader";
@@ -9,10 +9,20 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  const timeoutRef = useRef(null);
+
   const handleSearch = (e) => {
-    // Handle search input change
-    console.log(e.target.value);
-  }
+    const text = e.target.value;
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    if (text.length > 2) {
+      // There should not be any api call for next 2 seconds
+      timeoutRef.current = setTimeout(() => {
+        dispatch(getMovies(text));
+      }, 2000);
+    }
+  };
 
   useEffect(() => {
     dispatch(getMovies());
@@ -37,7 +47,8 @@ const Home = () => {
 
       <div className="movie-list">
         {movies &&
-          movies.results && movies.results.map((item, index) => {
+          movies.results &&
+          movies.results.map((item, index) => {
             return <MovieCard key={index} movie={item} />;
           })}
       </div>
