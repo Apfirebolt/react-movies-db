@@ -10,7 +10,6 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("dispatching");
     dispatch(getMovies());
   }, [dispatch]);
 
@@ -23,10 +22,11 @@ const Home = () => {
       <h1>Welcome to React Movies DB</h1>
       <p>Discover and explore your favorite movies,</p>
 
-      <div className="">
-        {movies.map((item, index) => {
-          return <MovieCard key={index} project={item} />;
-        })}
+      <div className="movie-list">
+        {movies &&
+          movies.results && movies.results.map((item, index) => {
+            return <MovieCard key={index} movie={item} />;
+          })}
       </div>
     </div>
   );

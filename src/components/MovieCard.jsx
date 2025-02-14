@@ -15,9 +15,9 @@ MovieCard.propTypes = {
     Movie_Name: PropTypes.string.isRequired,
     Year: PropTypes.number.isRequired,
     Timing: PropTypes.string.isRequired,
-    Rating: PropTypes.number.isRequired,
-    Votes: PropTypes.string.isRequired,
-    Genre: PropTypes.string.isRequired,
+    Rating: PropTypes.number,
+    Votes: PropTypes.string,
+    Genre: PropTypes.string,
     Language: PropTypes.string.isRequired,
   }).isRequired,
 };

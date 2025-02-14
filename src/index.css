@@ -52,6 +52,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.movie-list {
+  width: 80%;
+  margin: 1rem auto;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 0.25rem 1rem;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
