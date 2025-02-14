@@ -1,11 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMovies } from "../features/movieSlice";
 import Loader from "../components/Loader";
 import MovieCard from "../components/MovieCard";
+import Pagination from "../components/Pagination";
+import { s } from "framer-motion/client";
 
 const Home = () => {
   const { movies, isLoading } = useSelector((state) => state.movieData);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(25);
+  const [search, setSearch] = useState("");
 
   const dispatch = useDispatch();
 
@@ -13,20 +18,31 @@ const Home = () => {
 
   const handleSearch = (e) => {
     const text = e.target.value;
+    setSearch(text);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
     if (text.length > 2) {
       // There should not be any api call for next 2 seconds
       timeoutRef.current = setTimeout(() => {
-        dispatch(getMovies(text));
+        dispatch(getMovies({
+          search: text,
+          page: 1,
+        }));
       }, 2000);
     }
   };
 
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   useEffect(() => {
-    dispatch(getMovies());
-  }, [dispatch]);
+    dispatch(getMovies({
+      search: search ? search : "",
+      page: currentPage,
+    }));
+  }, [dispatch, currentPage]);
 
   if (isLoading) {
     return <Loader />;
@@ -52,6 +68,10 @@ const Home = () => {
             return <MovieCard key={index} movie={item} />;
         })}
       </div>
+
+      {movies && movies.count && (
+        <Pagination totalItems={movies.count} currentPage={currentPage} onPageChange={onPageChange} itemsPerPage={itemsPerPage} />
+      )}
     </main>
   );
 };
