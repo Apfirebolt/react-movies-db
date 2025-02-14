@@ -5,12 +5,17 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Theme colors */
+
+:root {
+  --primary: #646cff;
+  --secondary: #ff6b6b;
+  --tertiary: #f0f0f0;
+  --dark: #333;
 }
 
 a {
@@ -28,36 +33,86 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  padding: 1rem;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.movie-list {
+  width: 90%;
+  padding: 0.25rem;
+  margin: 1rem auto;
+  color: #ffffff;
 }
 
-.movie-list {
-  width: 80%;
+.movie-card {
+  background-color: var(--secondary);
+  padding: 1rem;
+  width: 90%;
+  border-bottom: 1px solid #333;
+
   margin: 1rem auto;
-  background-color: #1a1a1a;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card h2 {
+  margin: 1rem auto;
+  padding: 0.5rem;
+  background-color: var(--dark);
+  text-align: center;
+}
+
+.movie-card p {
+  margin: 0.25rem auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary);
   color: #ffffff;
   padding: 0.25rem 1rem;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.header nav ul li a {
+  margin: 0 0.5rem;
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.header nav ul li a:hover {
+  color: #f0f0f0;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.footer {
+  text-align: center;
+  background-color: var(--primary);
+  padding: 0.25rem;
+  color: #ffffff;
 }
 
 @media (prefers-color-scheme: light) {

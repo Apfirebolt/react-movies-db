@@ -4,8 +4,14 @@ const MovieCard = (props) => {
   const { movie } = props;
 
   return (
-    <div className="">
-      <h2 className="">{movie.Movie_Name}</h2>
+    <div className="movie-card">
+      <h2>{movie.Movie_Name}</h2>
+      <p>Year of Release : {movie.Year}</p>
+      <p>Run Time : {movie.Timing}</p>
+      <p>Rating : {movie.Rating}</p>
+      <p>Votes : {movie.Votes}</p>
+      <p>Genre : {movie.Genre}</p>
+      <p>Language : {movie.Language}</p>
     </div>
   );
 };
