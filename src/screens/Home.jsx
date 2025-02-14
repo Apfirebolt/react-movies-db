@@ -4,7 +4,6 @@ import { getMovies } from "../features/movieSlice";
 import Loader from "../components/Loader";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
-import { s } from "framer-motion/client";
 
 const Home = () => {
   const { movies, isLoading } = useSelector((state) => state.movieData);
@@ -37,12 +36,18 @@ const Home = () => {
     setCurrentPage(page);
   };
 
+  const prevSearchRef = useRef(search);
+
   useEffect(() => {
+    if (prevSearchRef.current !== search) {
+      prevSearchRef.current = search;
+      return;
+    }
     dispatch(getMovies({
       search: search ? search : "",
       page: currentPage,
     }));
-  }, [dispatch, currentPage]);
+  }, [dispatch, currentPage, search]);
 
   if (isLoading) {
     return <Loader />;
