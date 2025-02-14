@@ -50,7 +50,7 @@ const Home = () => {
           movies.results &&
           movies.results.map((item, index) => {
             return <MovieCard key={index} movie={item} />;
-          })}
+        })}
       </div>
     </main>
   );
