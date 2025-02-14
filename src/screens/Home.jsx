@@ -9,6 +9,11 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  const handleSearch = (e) => {
+    // Handle search input change
+    console.log(e.target.value);
+  }
+
   useEffect(() => {
     dispatch(getMovies());
   }, [dispatch]);
@@ -21,6 +26,14 @@ const Home = () => {
     <main className="container">
       <h1>Welcome to React Movies DB</h1>
       <p>Discover and explore your favorite movies.</p>
+
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search for a movie..."
+          onChange={handleSearch}
+        />
+      </div>
 
       <div className="movie-list">
         {movies &&

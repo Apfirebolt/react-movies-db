@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./screens/Home";
-import TestPage from "./screens/Test";
+import MovieDetail from "./screens/MovieDetail";
 import About from "./screens/About";
 
 const App = () => {
@@ -11,9 +11,9 @@ const App = () => {
       <Header />
         <Routes>
           <Route path="/" element={<HomePage/>} exact />
-          <Route path="/test" element={<TestPage/>} />
           <Route path="/about" element={<About/>} />
-          <Route path="*" element={<Navigate to="/test" />} />
+          <Route path="/movie/:id" element={<MovieDetail/>} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       <Footer />
     </Router>

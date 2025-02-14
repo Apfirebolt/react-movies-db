@@ -5,7 +5,6 @@ const API_URL = 'https://softgenie.org/api/movies'
 // Get user movies
 const getMovies = async () => {
   try {
-    console.log('Fetching movies..')
     const response = await axios.get(API_URL)
     return response.data
   } catch (err) {
@@ -18,15 +17,9 @@ const getMovies = async () => {
 }
 
 // Get single Movie
-const getMovie = async (movieId, token) => {
+const getMovie = async (movieId) => {
   try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  
-    const response = await axios.get(API_URL + movieId, config)
+    const response = await axios.get(API_URL +  '/' + movieId)
   
     return response.data
   } catch (err) {

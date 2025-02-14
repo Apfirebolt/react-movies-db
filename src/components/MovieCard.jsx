@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 const MovieCard = (props) => {
   const { movie } = props;
@@ -12,12 +13,15 @@ const MovieCard = (props) => {
       <p>Votes : {movie.Votes}</p>
       <p>Genre : {movie.Genre}</p>
       <p>Language : {movie.Language}</p>
+
+      <Link to={`/movie/${movie.ID}`} className="view-details">View Details</Link>
     </div>
   );
 };
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
+    ID: PropTypes.number.isRequired,
     Movie_Name: PropTypes.string.isRequired,
     Year: PropTypes.number.isRequired,
     Timing: PropTypes.string.isRequired,

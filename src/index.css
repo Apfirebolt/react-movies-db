@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito:wght@400;700&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -16,6 +17,15 @@
   --secondary: #ff6b6b;
   --tertiary: #f0f0f0;
   --dark: #333;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--tertiary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
 }
 
 a {
@@ -73,6 +83,40 @@ h1 {
 
 .movie-card p {
   margin: 0.25rem auto;
+}
+
+.movie-card .view-details {
+  text-align: center;
+  margin: 1rem auto;
+  color: #ffffff;
+  display: block;
+  max-width: 200px;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--primary);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card .view-details:hover {
+  background-color: #535bf2;
+  transition: all 0.3s;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader p {
+  font-size: 4.5em;
+  font-weight: 700;
 }
 
 .header {
