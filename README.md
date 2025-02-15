@@ -12,7 +12,10 @@ For a change I tried using complete vanilla CSS for this project.
 
 ## Screenshots
 
-Would be added later as it is likely to change if I decide to change the theme.
+Find the screenshots of homepage and movie details page below.
+
+![Home Page](./screenshots/1.png)
+![Details Page](./screenshots/2.png)
 
 ## Features
 
