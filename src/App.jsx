@@ -9,6 +9,7 @@ import MovieDetail from "./screens/MovieDetail";
 // lazy imports for code splitting
 const About = lazy(() => import("./screens/About"));
 const Test = lazy(() => import("./screens/Test"));
+const Movie = lazy(() => import("./screens/Movie"));
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage/>} exact />
           <Route path="/about" element={<About/>} />
+          <Route path="/movie" element={<Movie/>} />
           <Route path="/movie/:id" element={<MovieDetail/>} />
           <Route path="/test" element={<Test/>} />
           <Route path="*" element={<Navigate to="/" />} />

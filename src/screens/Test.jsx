@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 
 const Test = () => {
   // Define the reducer function
@@ -20,6 +20,7 @@ const Test = () => {
 
   // Use the useReducer hook to create a state and dispatch function
   const [state, dispatch] = useReducer(counterReducer, { count: 0 });
+  const inputRef = useRef(null);
 
   return (
     <main className="container">
@@ -38,6 +39,20 @@ const Test = () => {
         <button onClick={() => dispatch({ type: "setValue", payload: 10 })}>
           Set to 10
         </button>
+
+        <input
+          ref={inputRef}
+          type="number"
+          onChange={(e) =>
+            dispatch({ type: "setValue", payload: Number(e.target.value) })
+          }
+        />
+
+        <button onClick={() => console.log(inputRef.current.value)}>
+          Print Input Value
+        </button>
+
+        <button onClick={() => inputRef.current.focus()}>Focus Input</button>
       </div>
     </main>
   );
